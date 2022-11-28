@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<head>
+    <title>Manage Menu Page</title>
+    <link rel="stylesheet" href="style/ManageInventory.css"></head>
+</head>
+
+<body>
+    <header>
+        <a href="ManagerHome" target="_blank"> <img class="logo" src = "style/Chick-fil-A-logo.png" alt ="logo"> </a>
+        
+        <nav>
+            <ul class ="nav_links">
+                <li><a href="ManageInventory">Manage Inventory</a></li>
+                <li><a href="Order_History">View Order History</a></li>
+                <li><a href="ManageMenu">Manager Menu</a></li>
+                <li><a href="Reports">Reports</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="#"><button>Support</button></a>
+    </header>
+        
+    <div class = "Submission-Form">
+        <div class = "child">
+            <form action = "add_ingredient_to_menuitem" method = 'post'>
+                <h2>Add Ingredient</h2>
+
+                <div class="form__item"> 
+                    <label htmlFor = "name" class="form__label">Menu Item</label>
+                    <input type = "text" name = "name" class="form__input" placeholder="Enter name of menu item">
+                    
+                    <label htmlFor = "category" class="form__label">Ingredient</label>
+                    <input type = "text" id = "category" name = "name" class="form__input" placeholder="Enter ingredient name">
+                   
+                    <label htmlFor = "unit" class="form__label"> Ingredient Quantity</label>
+                    <input type = "text" id = "unit" name = "name" class="form__input" placeholder="Enter ingredient quantity ex. 6">
+                    <br>
+                    <input type="submit" class="form_submit" value="Submit">
+                </div>
+            </form>
+        </div>
+        <div class = "child">
+            <form action = "remove_ingredient_from_menuitem" method = 'post'>
+                <h2>Remove Ingredient</h2>
+
+                <div class="form__item"> 
+                    <label htmlFor = "name" class="form__label">Menu Item</label>
+                    <input type = "text" name = "name" class="form__input" placeholder="Enter menu item">
+                    
+                    <label htmlFor = "category" class="form__label">Ingredient</label>
+                    <input type = "text" id = "category" name = "name" class="form__input" placeholder="Enter ingredient name">
+                    <br>
+                    <input type="submit" value="Submit" class="form_submit">
+                </div>
+            </form>
+        </div>
+
+        <div class = "child">
+            <form action = "add_menu" method = 'post'>
+                <h2>Add Item</h2>
+                <div class="form__item"> 
+                    <label htmlFor = "name" class="form__label">Menu Item</label>
+                    <input type = "text" name = "name" class="form__input" placeholder="Enter menu item">
+                 
+                    <label htmlFor = "category" class="form__label">Category</label>
+                    <input type = "text" id = "category" name = "name" class="form__input" placeholder="Enter menu item category ex. Entree">
+                    
+                    <label htmlFor = "unit" class="form__label">Price</label>
+                    <input type = "text" id = "unit" name = "name" class="form__input" placeholder="Enter price in USD ex. 4.20">
+                    <br>
+                    <input type="submit" value="Submit" class="form_submit">
+                </div>
+            </form>
+        </div>
+
+        <div class = "child">
+            <form action = "delete_menu" method = 'post'>
+                <h2>Delete Item</h2>
+                <div class="form__item"> 
+                    <label htmlFor = "name" class="form__label">Menu Item</label>
+                    <input type = "text" name = "name" class="form__input" placeholder="Enter menu item">
+                    <br>
+                    <input type="submit" value="Submit" class="form_submit">
+                </div>
+            </form>
+        </div>
+    </div>
+    <h4>Menu</h4>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tr>
+            <tbody>
+                <% for (var i in menu_items) { %>
+                <td><%=menu_items[i].name %></td>
+                <td><%=menu_items[i].category %></td>
+                <td><%=menu_items[i].price %></td>
+
+            </tr>
+          <% } %>
+        </tbody>
+    </table>
+    <h2>Translate Into Another Language</h2>
+    <div id="google_translate_element"></div>
+    <script type="text/javascript"> 
+    function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>

@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+}
+.form {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+.form * {
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+.form__title {
+    font-size: 2em;
+    font-weight: 600;
+}
+.form__item{
+    display: flex;
+    flex-direction: column;
+}
+.form__item > *{
+    align-self: flex-start;
+}
+.form__label{
+    font-weight: 600;
+    padding: 10px 0;
+}
+
+.form__input {
+
+    -webkit-appearance: none;
+    width: 100%;
+    max-width: 425px;
+    min-height: calc(.5em + (.6em*2) + .6em);
+    padding: .6em;
+    font-size: .9em;
+    font-family: sans-serif;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    background: #f9f9f9;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+    outline: none;
+    
+}
+.form__input:focus {
+    background: #ffffff;
+}
+.form__input::placeholder {
+    color: #bbbbbb;
+}
+
+.form__input--error{
+    color: #d50000;
+    background: #fff8f8;
+    border-color: #d50000;
+}
+.form__input--error::placeholder{
+    color: #ffbfbf;
+}
+.form__error {
+    padding-top: 10px;
+    color: #d50000;
+    font-size: 0.9em;
+    visibility: hidden;
+}
+
+.form__input--error + .form__error{
+    visibility: visible;
+}
+
+.form_submit{
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    padding: 9px 25px;
+    background-color: red;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.form_submit:hover {
+    background-color: white;
+    color: red;
+}
+
+li, a, button {
+    
+    font-weight: 500;
+    font-size: 20px;
+    color: red;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: white;
+}
+.logo {
+    cursor: pointer;
+}
+.nav_links li {
+    display: inline-block;
+    padding: 0px 20px;
+
+}
+.nav_links li a {
+    transition: all 0.3s ease 0s;
+}
+.nav_links li a:hover{
+    color: #0088a9;
+}
+button {
+    padding: 9px 25px;
+    background-color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+button:hover {
+    background-color: red;
+    color: white;
+}
+
+div {
+    overflow:hidden;
+    overflow-y: scroll;
+    height: 500px;
+    align-content: center;
+    border: 1px black;
+}
+
+h1 {
+    color: black;
+    
+    font-size: 40px;
+    text-align: center;
+    
+}
+h3{
+    color: red;
+    text-align: left;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 30px;
+}
+h4{
+    color: red;
+    text-align: left;
+    font-size: 40px;
+    padding-left: 240px;
+    padding-top: 30px;
+}
+.content-table{
+    border-collapse: collapse;
+    margin: 25px 25px;
+    font-size: .9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-position-x: center;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.content-table button{
+    font-weight: 500;
+    font-size: 23px;
+    color: red;
+    text-decoration: none;
+}
+
+.content-table thead tr {
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+.content-table th,
+.content-table td{
+    padding: 12px 15px;
+}
+.content-table tbody tr{
+    border-bottom: 1px solid #dddddd;
+
+}
+.content-table tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid red;
+}
+.content-table tbody tr:active-row{
+    font-weight: bold;
+    color: red;
+}
+.Submission-Form {
+    display: flex;
+    width: auto;
+    justify-content: center;
+    color: black;
+    border-color: black;
+    border:1px solid black;
+}
+
+.child {
+    width: 33%;
+    float: left;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+
+/* .divScroll {
+    overflow:hidden;
+    overflow-y: scroll;
+    height: 300px;
+    align-content: center;
+    border: 1px black;
+    text-align: center;
+} */

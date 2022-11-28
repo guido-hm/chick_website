@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+    <title>Order History</title>
+    <link rel="stylesheet" href="style/Order_History.css">
+</head>
+
+<body>
+    <header>
+        <a href="ManagerHome" target="_blank"> <img class="logo" src = "style/Chick-fil-A-logo.png" alt ="logo"> </a>
+        
+        <nav>
+            <ul class ="nav_links">
+                <li><a href="ManageInventory">Manage Inventory</a></li>
+                <li><a href="Order_History">View Order History</a></li>
+                <li><a href="ManageMenu">Manager Menu</a></li>
+                <li><a href="Reports">Reports</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="#"><button>Support</button></a>
+    </header>
+    
+    <div>
+        <h1>Order History</h1>
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Day's Total</th>
+                </tr>
+            </thead>
+            <tr>
+                <tbody>
+                    <% for (var i in orders) { %>
+                        <td><%=orders[i].date %></td>
+                        <td><%=orders[i].sum %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+        </table>
+    </div>
+    <h2>Translate Into Another Language</h2>
+    <div id="google_translate_element"></div>
+    <script type="text/javascript"> 
+    function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
