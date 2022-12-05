@@ -132,7 +132,8 @@ button:hover {
 }
 
 div {
-    
+    overflow:hidden;
+    overflow-y: scroll;
     height: 500px;
     align-content: center;
     border: 1px black;
@@ -174,9 +175,6 @@ h5{
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    background-position-x: center;
-    margin-left: auto;
-    margin-right: auto;
 
 }
 .content-table button{
@@ -226,13 +224,3 @@ h5{
     padding: 10px;
     border: 2px solid black;
 }
-
-
-/* .divScroll {
-    overflow:hidden;
-    overflow-y: scroll;
-    height: 300px;
-    align-content: center;
-    border: 1px black;
-    text-align: center;
-} */

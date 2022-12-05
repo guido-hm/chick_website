@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>Server Login Page</title>
+    <title>Server Login</title>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <div id="g_id_onload"
          data-client_id="929197340915-rtv5p06u87gjq3cbipg7224mm16dt495.apps.googleusercontent.com"
@@ -11,9 +11,10 @@
 <body>
     
     <div class="page">
-        <h2> Login page for server </h2>
-        <div class="g_id_signin" data-type="standard"></div>
-        <a href="#" onclick="signOut();">Sign out</a>
+        <h2 class="button3"> Login to Server </h2>
+        <div class="g_id_signin button3" data-type="standard"></div>
+        <div class="button3"> <h6> <a href="/serverLogout" class="logout">Sign out</a> </h6> </div>
+        <div class="button3"> <h6> <a href="/" class="logout"> Back </a> </h6> </div>
 
         <script>
             function onSignIn(response) {

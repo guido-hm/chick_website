@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <head>
-    <title>Home Page</title>
+    <title>Chick-fil-A</title>
+    <link rel="stylesheet" href="style/server.css"></head>
 </head>
 <body>
-    <div className="title_main">
-        <h1> Welcome! </h1>
-        <ul>
-        <li> <a href="customer"> <h4> Customer </h4> </a> </li>
-        <li> <a href="serverLogin" > <h4> Server </h4> </a> </li>
-        <li> <a href="managerLogin"> <h4> Manager </h4> </a> </li> 
+
+    <div id= "fixedTop">
+
+        <div id="google_translate_element">
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                }
+            </script>
+
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </div>
+
+        <div class= "chick-fil-a-logo">
+            <a href="/"><img src="./images/chick-fil-a-logo.png" alt="logo"/></a>
+        </div>
+        
     </div>
 
-    <script src="server_funcs.js"></script>   
+    <div class="left">
+        <div class="button3" style="margin-top: 130px;"> <h6> <a href="customer" class="logout"> Customer </a> </h6> </div>
+        <div class="button3"> <h6> <a href="serverLogin" class="logout"> Server </a> </h6> </div>
+        <div class="button3"> <h6> <a href="managerLogin" class="logout"> Manager </a> </h6> </div>
+    </div>
+
+    <div class="right">
+        <img src="./images/food.jpg" class="home-img" alt="logo"/>
+        <img src="./style/cfa-store.jpg" class="home-img" alt="logo"/>
+    </div>
+  
 </body>

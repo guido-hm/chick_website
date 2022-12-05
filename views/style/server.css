@@ -21,31 +21,50 @@
 
 .back {
     background-color: #b11f27;
-    color: #000000;
+    color: #000000;    
+    font-family: Arial, Helvetica, sans-serif;
+
     font-size: 40px;
     text-align: center;
     text-decoration: none;
+    border: none; 
+    border-radius: 20px;
+
     width: 10vw;
     height: 50px;
     position: fixed;
     bottom: 7px;
     left: 1vw;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .submit {
     background-color: #4da25f;
-    color: #000000;
+    color: #000000;    
+    font-family: Arial, Helvetica, sans-serif;
+
     font-size: 40px;
     text-align: center;
     text-decoration: none;
+    border: none; 
+    border-radius: 20px;
+
     width: 10vw;
     height: 50px;
     position: fixed;
     bottom: 7px;
     left: 13vw;
-    font-family: Arial, Helvetica, sans-serif;
-    border: none;
+}
+
+.back:hover{
+    background-color: rgb(190, 189, 189);
+    color: #b11f27;
+    border: 3px solid #b11f27;
+}
+
+.submit:hover{
+    background-color: rgb(190, 189, 189);
+    color: #4da25f;
+    border: 3px solid #4da25f;
 }
 
 h4 {
@@ -68,13 +87,35 @@ img {
     padding-left: 20px;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 1vw;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgb(190, 189, 189);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
 /* MENU ITEM SECTION ----------------------------------*/
+
 .buttons {
     float: left;
     width: 75vw;
     height: 100vh;
     position: fixed;
-    overflow-y:hidden;
+    overflow-y: hidden;
     top: 0;
     right: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -121,7 +162,7 @@ h1 {
     border: none;
     width: fit-content;
     margin-top: 10px;
-    
+
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -130,7 +171,7 @@ h2 {
     margin-bottom: 2px;
 }
 
-.button{
+.button {
     width: 24%;
     height: 33%;
     position: fixed;
@@ -140,7 +181,7 @@ h2 {
     border: none;
 }
 
-.button2{
+.button2 {
     background-color: transparent;
     border: none;
     font-family: Arial, Helvetica, sans-serif;
@@ -149,22 +190,76 @@ h2 {
     font-weight: bold;
 }
 
-/* width */
-::-webkit-scrollbar {
-    width: 1vw;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background:  rgb(190, 189, 189);
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
+
+/* START ORDER PAGE SECTION ----------------------------------*/
+
+.chick-fil-a-logo {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    padding-left: -20px;
+}
+
+.start {
+    background-color: #4da25f;
+    color: white;
+    font-size: 40px;
+    text-decoration: none;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+}
+
+.logout {
+    background-color: #b11f27;
+    color: white;
+    font-size: 40px;
+    text-decoration: none;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+}
+
+.left{
+    width: 50%;
+    float: left;
+}
+
+.right{
+    width: 50%;
+    float: left;
+}
+
+.button3{
+    margin-top: 50px;
+    margin-left: 150px;
+    font-family: "Montserrat", sans-serif;
+    color: #b11f27;
+}
+
+.start:hover{
+    background-color: white;
+    color: #4da25f;
+    border: 3px solid #4da25f;
+}
+
+.logout:hover{
+    background-color: white;
+    color: #b11f27;
+    border: 3px solid #b11f27;
+}
+
+.home-img{
+    width: 500px;
+    height: 300px;
+    margin-left: 50px;
+    margin-top: 20px;
+    object-fit: cover;
+}
+
+h6{
+    font-family: "Montserrat", sans-serif;
+}

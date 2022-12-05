@@ -1,4 +1,6 @@
 const express = require('express');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUI = require('swagger-ui-express');
 const { Pool } = require('pg');
 const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
@@ -7,6 +9,22 @@ const cookieParser = require('cookie-parser');
 // Create express app
 const app = express();
 const port = 5000;
+
+
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            itle:'Chick Fil A Website',
+            version: '1.0.0',
+            description: 'Website for Chick Fil A customers, servers, and managers.'
+        }
+    },
+    apis:['index.js'],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+
 
 const {OAuth2Client} = require('google-auth-library');
 const CLIENT_ID = "929197340915-rtv5p06u87gjq3cbipg7224mm16dt495.apps.googleusercontent.com"
@@ -34,6 +52,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
 
+
 app.get('/', (req, res) => {
     const data = {name: 'Sana'};
     res.render('index', data);
@@ -42,6 +61,21 @@ app.get('/', (req, res) => {
 // SERVER *****************************************************
 
 // entrees
+/**
+ * @swagger
+ * /entrees:
+ *   get:
+ *     description: selects all entrees from database and renders the entrees page for server
+ *     parameters:
+ *       - name: 
+ *         in: 
+ *         description:
+ *         required: false
+ *     responses:
+ *       name_of_response:
+ *         description: 
+ * 
+ */
 app.get('/entrees', checkAuthenticatedServer, (req, res) => {
     entree_items = []
     pool
@@ -199,8 +233,6 @@ app.post('/deleteitem', (req, res) => {
 });
 
 app.post('/deletetable', (req, res) => {
-    holdingmaxid = [];
-    var maxid = 0;
 
     let date = new Date(Date.now());
     //console.log(date.toISOString().split('T')[0]);
@@ -299,7 +331,7 @@ app.post('/serverLogin', (req, res) => {
 
 app.get('/serverLogout', (req, res)=>{
     res.clearCookie('session-token');
-    res.redirect('/serverLogin')
+    res.redirect('/')
 })
 
 function checkAuthenticatedServer(req, res, next){
@@ -328,11 +360,29 @@ function checkAuthenticatedServer(req, res, next){
 
 
 // CUSTOMER *****************************************************
-
+/**
+* @swagger
+* /customerentrees:
+*   get:
+*     tags:
+*       - Customer Entrees
+*     summary: Getting Entrees for Customer side
+*     description: Reading from the database the menu items that are under the 'entrees' category.
+*     parameters:
+*       - name: entree_items
+*         in: query
+*         description: is a list of entree items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 // entrees
 app.get('/customerentrees', (req, res) => {
     entree_items = []
-    images = []
     pool
         .query('SELECT * FROM menu_items WHERE category=\'entree\';')
         .then(query_res => {
@@ -345,6 +395,27 @@ app.get('/customerentrees', (req, res) => {
         });
 });
 
+
+/**
+* @swagger
+* /customerwaffle_fries:
+*   get:
+*     tags:
+*       - Customer Waffle Fries
+*     summary: Getting Waffle Fries for Customer side
+*     description: Reading from the database the menu items that are under the 'waffle fries' category.
+*     parameters:
+*       - name: waf_items
+*         in: query
+*         description: is a list of waffle fries items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 // waffle fries
 app.get('/customerwaffle_fries', (req, res) => {
     waf_items = []
@@ -359,6 +430,26 @@ app.get('/customerwaffle_fries', (req, res) => {
         });
 });
 
+/**
+* @swagger
+* /customernuggets:
+*   get:
+*     tags:
+*       - Customer Nugget Entrees
+*     summary: Getting Nugget Entrees for Customer side
+*     description: Reading from the database the menu items that are under the 'nugget entrees' category.
+*     parameters:
+*       - name: nugget_items
+*         in: query
+*         description: is a list of nugget entree items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 // nugget entrees
 app.get('/customernuggets', (req, res) => {
     nugget_items = []
@@ -373,6 +464,27 @@ app.get('/customernuggets', (req, res) => {
         });
 });
 
+
+/**
+* @swagger
+* /customersides:
+*   get:
+*     tags:
+*       - Customer Sides
+*     summary: Getting Sides for Customer side
+*     description: Reading from the database the menu items that are under the 'sides' category.
+*     parameters:
+*       - name: sides
+*         in: query
+*         description: is a list of side items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 // sides
 app.get('/customersides', (req, res) => {
     sides = []
@@ -387,6 +499,27 @@ app.get('/customersides', (req, res) => {
         });
 });
 
+
+/**
+* @swagger
+* /customerdrinks:
+*   get:
+*     tags:
+*       - Customer Drinks
+*     summary: Getting Drinks for Customer side
+*     description: Reading from the database the menu items that are under the 'drinks' category.
+*     parameters:
+*       - name: drinks
+*         in: query
+*         description: is a list of drink items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 // drinks
 app.get('/customerdrinks', (req, res) => {
     drinks = []
@@ -401,6 +534,27 @@ app.get('/customerdrinks', (req, res) => {
         });
 });
 
+
+/**
+* @swagger
+* /customerdesserts:
+*   get:
+*     tags:
+*       - Customer Desserts
+*     summary: Getting Desserts for Customer side
+*     description: Reading from the database the menu items that are under the 'desserts' category.
+*     parameters:
+*       - name: desserts
+*         in: query
+*         description: is a list of dessert items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 // desserts
 app.get('/customerdesserts', (req, res) => {
     desserts = []
@@ -415,6 +569,27 @@ app.get('/customerdesserts', (req, res) => {
         });
 });
 
+
+/**
+* @swagger
+* /customersalads:
+*   get:
+*     tags:
+*       - Customer Salads
+*     summary: Getting Salads for Customer side
+*     description: Reading from the database the menu items that are under the 'salads' category.
+*     parameters:
+*       - name: salads
+*         in: query
+*         description: is a list of salad items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 // salads
 app.get('/customersalads', (req, res) => {
     salads = []
@@ -429,6 +604,27 @@ app.get('/customersalads', (req, res) => {
         });
 });
 
+
+/**
+* @swagger
+* /customerdressings:
+*   get:
+*     tags:
+*       - Customer Dressings
+*     summary: Getting Dressings for Customer side
+*     description: Reading from the database the menu items that are under the 'dressings' category.
+*     parameters:
+*       - name: dressings
+*         in: query
+*         description: is a list of dressing items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 // dressings
 app.get('/customerdressings', (req, res) => {
     dressings = []
@@ -443,6 +639,27 @@ app.get('/customerdressings', (req, res) => {
         });
 });
 
+
+/**
+* @swagger
+* /customersauces:
+*   get:
+*     tags:
+*       - Customer Sauces
+*     summary: Getting Sauces for Customer side
+*     description: Reading from the database the menu items that are under the 'sauces' category.
+*     parameters:
+*       - name: sauces
+*         in: query
+*         description: is a list of sauce items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 // sauces
 app.get('/customersauces', (req, res) => {
     sauces = []
@@ -464,6 +681,16 @@ app.get('/', (req, res) => {
 });
 
 
+/**
+* @swagger
+* /customerentreeform:
+*   post:
+*     tags:
+*       - Customer Current Order
+*     summary: Inserts to 'current_order' table
+*     description: Inserts into 'current_order' table in database to keep track of what items the customer has added to their cart.
+*
+*/
 app.post('/customerentreeform', (req, res) => {
     //var menuitemid = req.body.itemid;
     
@@ -479,6 +706,16 @@ app.post('/customerentreeform', (req, res) => {
 });
 
 
+/**
+* @swagger
+* /customerdeleteitem:
+*   post:
+*     tags:
+*       - Customer Delete Item
+*     summary: Deletes item from 'current_order' table
+*     description: Deletes the item the customer had selected that was in their cart. Essentially, deletes the row containing that item from the 'current_order' table in the database.
+*
+*/
 app.post('/customerdeleteitem', (req, res) => {
 
     // console.log('HI');
@@ -495,9 +732,26 @@ app.post('/customerdeleteitem', (req, res) => {
 
 });
 
+
+/**
+* @swagger
+* /customerdeletetable:
+*   post:
+*     tags:
+*       - Customer Submits Order
+*     summary: Customer Submits Order
+*     description: When customer submits their order, their order in table 'current_order' is copied to the 'orders' and 'order_items' table then deleted from 'current_order'. 
+*     parameters:
+*       - name: date
+*         in: query
+*         description: a variable holding the current date.
+*         required: false
+*       - name: timestamp
+*         in: query
+*         description: a variable holding the timestamp formatting needed to be inserted into the 'orders' table in the database.
+*         required: false
+*/
 app.post('/customerdeletetable', (req, res) => {
-    holdingmaxid = [];
-    var maxid = 0;
 
     let date = new Date(Date.now());
     //console.log(date.toISOString().split('T')[0]);
@@ -519,25 +773,6 @@ app.post('/customerdeletetable', (req, res) => {
                 });
             }
         });
-
-    // pool
-    //     .query('select max(id) from orders;')
-    //     .then(query_res => {
-    //         for (let i = 0; i < query_res.rowCount; i++){
-    //             holdingmaxid.push(query_res.rows[i]);
-    //         }
-    //         maxid = query_res.rows[0].max+1;
-    //         console.log(maxid);
-    // });
-
-    
-
-    //console.log(req.body.totalprice)
-
-
-    // for (var i=0, len=current_items.length; i<len; i++) {
-    //     console.log(current_items[i].item_id);
-    // }
 
     pool.query("DELETE FROM current_order where side= 2;", (err, results) => {
         if (err){
@@ -564,21 +799,24 @@ app.get('/customer', (req, res) => {
         });
 });
 
-
+/**
+* @swagger
+* /customerorderpage:
+*   get:
+*     tags:
+*       - Customer Order Page
+*     summary: Customer can view their order
+*     description: This allows the customer to view what they've added to their order (like a cart) which is read from the 'current_order' table in the database.
+*     parameters:
+*       - name: current_items
+*         in: query
+*         description: a list holding every item the customer added to their order.
+*         required: false
+*/
 app.get('/customerorderpage', (req, res) => {
     // select current_order
     current_items = []
-    var total = 0.0;
 
-    /*pool
-        .query('SELECT SUM(item_price) as sum_price FROM current_order where side=2;')
-        .then(query_res => {
-            // for (let i = 0; i < query_res.rowCount; i++){
-            //     current_items.push(query_res.rows[i]);
-            // }
-            current_items.push(query_res.rows[0].sum_price);
-            console.log(current_items[0].sum_price);
-        });*/
     
     pool
         .query('SELECT * FROM current_order where side=2;')
@@ -590,35 +828,27 @@ app.get('/customerorderpage', (req, res) => {
             const data = {current_items: current_items};
             res.render('customerorderpage', data);
         });
-    
-    // pool
-    //     .query('SELECT SUM(item_price) FROM current_order;')
-    //     .then(query_res => {
-    //         for (let i = 0; i < query_res.rowCount; i++){
-    //             totalp.push(query_res.rows[i]);
-    //         }
-    //         const data2 = {totalp: totalp};
-    //         return_data.table2 = data2;
-    //     });
-    
-    // console.log(return_data.table2);
-    // res.render('orderpage', return_data);
+
 });
 
+
+/**
+* @swagger
+* /customerpayment:
+*   get:
+*     tags:
+*       - Customer Payment Page
+*     summary: Customer can view their order and payment details
+*     description: This allows the customer to view what they've added to their order (like a cart) which is read from the 'current_order' table in the database as well as see the total price and be able to enter in some payment information.
+*     parameters:
+*       - name: current_items
+*         in: query
+*         description: a list holding every item the customer added to their order.
+*         required: false
+*/
 app.get('/customerpayment', (req, res) => {
     current_items = []
-    var total = 0.0;
 
-    /*pool
-        .query('SELECT SUM(item_price) as sum_price FROM current_order where side=2;')
-        .then(query_res => {
-            // for (let i = 0; i < query_res.rowCount; i++){
-            //     current_items.push(query_res.rows[i]);
-            // }
-            current_items.push(query_res.rows[0].sum_price);
-            console.log(current_items[0].sum_price);
-        });*/
-    
     pool
         .query('SELECT * FROM current_order where side=2;')
         .then(query_res => {
@@ -632,18 +862,23 @@ app.get('/customerpayment', (req, res) => {
 });
 
 
+/**
+* @swagger
+* /customerorderconfirmation:
+*   get:
+*     tags:
+*       - Customer Order Confirmation Page
+*     summary: Customer can view order details
+*     description: This allows the customer to once more view their order's id number and their total price after submitting which is read from the 'orders' table in the database.
+*     parameters:
+*       - name: order_dets
+*         in: query
+*         description: a list holding the customer's recent submitted order.
+*         required: false
+*
+*/
 app.get('/customerorderconfirmation', (req, res) => {
     orderdets = []
-
-    /*pool
-        .query('SELECT SUM(item_price) as sum_price FROM current_order where side=2;')
-        .then(query_res => {
-            // for (let i = 0; i < query_res.rowCount; i++){
-            //     current_items.push(query_res.rows[i]);
-            // }
-            current_items.push(query_res.rows[0].sum_price);
-            console.log(current_items[0].sum_price);
-        });*/
     
     pool
         .query('SELECT * FROM orders where id=(SELECT max(id) from orders where employee_id = 23);')
@@ -659,15 +894,34 @@ app.get('/customerorderconfirmation', (req, res) => {
 
 // MANAGER *****************************************************
 
+/**
+ * @swagger
+ * /View_Menu:
+ *   get:
+ *     description: Renders the View_Menu template
+ * 
+ */
 app.get('/View_Menu', (req, res) => {
     res.render('View_Menu')
 });
 
 // MANAGER LOGIN
+/**
+ * @swagger
+ * /managerLogin:
+ *   get:
+ *     description: Renders the ManagerLogin
+ * 
+ */
 app.get('/managerLogin', (req, res) => {
     res.render('ManagerLogin');
 });
-
+/**
+ * @swagger
+ * /managerLogin:
+ *   post:
+ *     description: Verifies token with google API. If token is verified, a session-token cookie is created. Else, error is thrown to console and no cookie is created
+ */
 app.post('/managerLogin', (req, res) => {
     let token = req.body.token;
     console.log(token);
@@ -689,12 +943,29 @@ app.post('/managerLogin', (req, res) => {
         res.send('success');
       }).catch(console.error);
 });
-
+/**
+ * @swagger
+ * /managerLogout:
+ *   get:
+ *     description: Clears the session-token cookie and renders the index page.
+ * 
+ */
 app.get('/managerLogout', (req, res)=>{
     res.clearCookie('session-token');
-    res.redirect('/managerLogin')
+    res.redirect('/')
 })
 
+/**
+ * @swagger
+ * /checkAuthenticated:
+ *   get:
+ *     description: Makes sure that the user has the appropiate cookie (permission) to access a page
+ *     parameters:
+ *       - name: token
+ *         description: token is the cookie called "session-token". if the proper cookie is owned by the user, then they are given access
+ *         required: false
+ * 
+ */
 function checkAuthenticated(req, res, next){
     let token = req.cookies['session-token'];
 

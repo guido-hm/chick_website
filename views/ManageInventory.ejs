@@ -1,130 +1,132 @@
 <!DOCTYPE html>
 <html lang="en-x-mtfrom-fr">
-<head>
-    <title>Manage Inventory Page</title>
-    <link rel="stylesheet" href="style/ManageInventory.css"></head>
-</head>
-
-<body>
-    <header>
-        <a href="ManagerHome" target="_blank"> <img class="logo" src = "style/Chick-fil-A-logo.png" alt ="logo"> </a>
-        
-        <nav>
-            <ul class ="nav_links">
-                <li><a href="ManageInventory">Manage Inventory</a></li>
-                <li><a href="Order_History">View Order History</a></li>
-                <li><a href="ManageMenu">Manager Menu</a></li>
-                <li><a href="Reports">Reports</a></li>
-            </ul>
-        </nav>
-        <a class="cta" href="managerLogOut"><button><%= user.first_name %></button></a>
-    </header>
+    <!DOCTYPE html>
+    <head>
+        <title>Manage Inventory Page</title>
+        <link rel="stylesheet" href="style/ManageInventory.css"></head>
+    </head>
     
-    <h1>Manage Inventory</h1>
-
-  
+    <body>
+        <header>
+            <a href="ManagerHome" target="_blank"> <img class="logo" src = "style/Chick-fil-A-logo.png" alt ="logo"> </a>
+            
+            <nav>
+                <ul class ="nav_links">
+                    <li><a href="ManageInventory">Manage Inventory</a></li>
+                    <li><a href="Order_History">View Order History</a></li>
+                    <li><a href="ManageMenu">Manager Menu</a></li>
+                    <li><a href="Reports">Reports</a></li>
+                </ul>
+            </nav>
+            <a class="cta" href="#"><button><%= user.first_name %></button></a>
+        </header>
         
-    <div class = "Submission-Form">
-        <div class = "child">
-            <form class="form" action = "update_inventory" method = 'post'>
-                <h2>Update Inventory</h2>
-
-                <div class="form__item"> 
-                    <label htmlFor = "name" class="form__label">Item Name</label>
-                    <input type = "text" name = "name" class="form__input" placeholder="Enter item name">
-                    
-                    <label htmlFor = "category" class="form__label">Item Category</label>
-                    <input type = "text" id = "category" name = "name" class="form__input" placeholder="Enter item id">
-                    
-                    <label htmlFor = "unit" class="form__label" class="form__label">Item Unit</label>
-                    <input type = "text" id = "unit" name = "name" class="form__input" placeholder="Enter item measurement units">
-                
-                    <label htmlFor = "cost" class="form__label">Item Cost</label>
-                    <input type = "text" id = "cost" name = "name" class="form__input" placeholder="Enter item cost in USD ex. 4.20">
-                
-                    <label htmlFor = "quantity" class="form__label">Item Quantity</label>
-                    <input type = "text" id = "quantity" name = "name" class="form__input" placeholder="Enter item quantity ex. 6">
-                    <br>
-                    <input type="submit" value="Submit" class="form_submit">
-                </div>
-            </form>
-        </div>
-
-        <div class = "child">
-            <form class="form" action = "add_inventory" method = 'post'>
-                <h2>Add Item</h2>
-
-                <div class="form__item"> 
-                    <label htmlFor = "name" class="form__label">Item Name</label>
-                    <input type = "text" name = "name" class="form__input" placeholder="Enter item name">
-                    
-                    <label htmlFor = "category" class="form__label">Item Category</label>
-                    <input type = "text" id = "category" name = "name"  class="form__input" placeholder="Enter item category">
-                    
-                    <label htmlFor = "unit" class="form__label">Item Unit</label>
-                    <input type = "text" id = "unit" name = "name" class="form__input" placeholder="Enter item measurement units">
-                   
-                    <label htmlFor = "cost" class="form__label">Item Cost</label>
-                    <input type = "text" id = "cost" name = "name" class="form__input" placeholder="Enter item cost in USD ex. 4.20">
-                   
-                    <label htmlFor = "quantity" class="form__label">Item Quantity</label>
-                    <input type = "text" id = "quantity" name = "name" class="form__input" placeholder="Enter item quantity ex. 6">
-                    <br>
-
-                    <label htmlFor = "minquantity" class="form__label">Item Minimum Quantity</label>
-                    <input type = "text" id = "minquantity" name = "name" class="form__input" placeholder="Enter item min quantity ex. 6">
-                    <br>
-                    <input type="submit" value="Submit" class="form_submit">
-                </div>
-            </form>
-        </div>
-
-        <div class = "child">
-            <form class="form" action = "delete_inventory" method = 'post'>
-                <h2>Delete Item</h2>
-                
-                <div class="form__item"> 
-                    <label htmlFor = "name" class="form__label">Item Name</label>
-                    <input type = "text" name = "name" class="form__input" placeholder="Enter item name">
-                    <br>
-                    <input class="form_submit" type="submit" value="Submit">
-                </div>
-                
-                
-                
-            </form>
-        </div>
-    </div>
+        <h1>Manage Inventory</h1>
     
-        <h3>Inventory</h3>
-        <table class="content-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Unit</th>
-                    <th>Cost</th>
-                    <th>Quantity</th>
-                    <th>Mininum Quantity</th>
-                </tr>
-            </thead>
-            <tr>
-                <tbody>
-            <% for (var i in inventory_items) { %>
-                        <td><%=inventory_items[i].name %></td>
-                        <td><%=inventory_items[i].category %></td>
-                        <td><%=inventory_items[i].unit %></td>
-                        <td><%=inventory_items[i].cost %></td>
-                        <td><%=inventory_items[i].quantity %></td>
-                        <td><%=inventory_items[i].minimum_quantity %></td>
+      
+            
+        <div class = "Submission-Form">
+            <div class = "child">
+                <form class="form" action = "update_inventory" method = 'post'>
+                    <h2>Update Inventory</h2>
+    
+                    <div class="form__item"> 
+                        <label htmlFor = "name" class="form__label">Item Name</label>
+                        <input type = "text" name = "name" class="form__input" placeholder="Enter item name">
+                        
+                        <label htmlFor = "category" class="form__label">Item Category</label>
+                        <input type = "text" id = "category" name = "name" class="form__input" placeholder="Enter item id">
+                        
+                        <label htmlFor = "unit" class="form__label" class="form__label">Item Unit</label>
+                        <input type = "text" id = "unit" name = "name" class="form__input" placeholder="Enter item measurement units">
+                    
+                        <label htmlFor = "cost" class="form__label">Item Cost</label>
+                        <input type = "text" id = "cost" name = "name" class="form__input" placeholder="Enter item cost in USD ex. 4.20">
+                    
+                        <label htmlFor = "quantity" class="form__label">Item Quantity</label>
+                        <input type = "text" id = "quantity" name = "name" class="form__input" placeholder="Enter item quantity ex. 6">
+                        <br>
+                        <input type="submit" value="Submit" class="form_submit">
+                    </div>
+                </form>
+            </div>
+    
+            <div class = "child">
+                <form class="form" action = "add_inventory" method = 'post'>
+                    <h2>Add Item</h2>
+    
+                    <div class="form__item"> 
+                        <label htmlFor = "name" class="form__label">Item Name</label>
+                        <input type = "text" name = "name" class="form__input" placeholder="Enter item name">
+                        
+                        <label htmlFor = "category" class="form__label">Item Category</label>
+                        <input type = "text" id = "category" name = "name"  class="form__input" placeholder="Enter item category">
+                        
+                        <label htmlFor = "unit" class="form__label">Item Unit</label>
+                        <input type = "text" id = "unit" name = "name" class="form__input" placeholder="Enter item measurement units">
+                       
+                        <label htmlFor = "cost" class="form__label">Item Cost</label>
+                        <input type = "text" id = "cost" name = "name" class="form__input" placeholder="Enter item cost in USD ex. 4.20">
+                       
+                        <label htmlFor = "quantity" class="form__label">Item Quantity</label>
+                        <input type = "text" id = "quantity" name = "name" class="form__input" placeholder="Enter item quantity ex. 6">
+                        <br>
+                        <input type="submit" value="Submit" class="form_submit">
+                    </div>
+                </form>
+            </div>
+    
+            <div class = "child">
+                <form class="form" action = "delete_inventory" method = 'post'>
+                    <h2>Delete Item</h2>
+                    
+                    <div class="form__item"> 
+                        <label htmlFor = "name" class="form__label">Item Name</label>
+                        <input type = "text" name = "name" class="form__input" placeholder="Enter item name">
+                        <br>
+                        <input class="form_submit" type="submit" value="Submit">
+                    </div>
+                    
+                    
+                    
+                </form>
+            </div>
+        </div>
+        
+            <h3>Inventory</h3>
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Unit</th>
+                        <th>Cost</th>
+                        <th>Quantity</th>
+                        <th>Mininum Quantity</th>
                     </tr>
-                
-              <% } %>
-            </tbody>
-        </table>
+                </thead>
+                <tr>
+                    <tbody>
+                <% for (var i in inventory_items) { %>
+                            <td><%=inventory_items[i].name %></td>
+                            <td><%=inventory_items[i].category %></td>
+                            <td><%=inventory_items[i].unit %></td>
+                            <td><%=inventory_items[i].cost %></td>
+                            <td><%=inventory_items[i].quantity %></td>
+                            <td><%=inventory_items[i].minimum_quantity %></td>
+                        </tr>
+                    
+                  <% } %>
+                </tbody>
+            </table>
+      
+
         
-        <h2>Translate Into Another Language</h2>
-        <div id="google_translate_element"></div>
+   
+        
+
+</body>
+<class id="google_translate_element">Translate into another Language</class>
         <script type="text/javascript"> 
         function googleTranslateElementInit() {
         new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
@@ -132,6 +134,4 @@
         </script>
 
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-</body>
 </html>

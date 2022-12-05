@@ -16,7 +16,7 @@
                 <li><a href="Reports">Reports</a></li>
             </ul>
         </nav>
-        <a class="cta" href="#"><button>Support</button></a>
+        <a class="cta" href="#"><button><%= user.first_name %></button></a>
     </header>
     
     
@@ -116,18 +116,17 @@
     <a href="RestockReport" class="form_submit">Submit</a>
     <br>
     <br>
-
+    <div>
+            
+        <div id="google_translate_element"></div>
+        <script type="text/javascript"> 
+        function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+        </script>
+    
+    
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </body>
+    </div>
 </div>
-<form class="form">
-    <h2>Translate Into Another Language</h2>
-    <div id="google_translate_element"></div>
-    <script type="text/javascript"> 
-    function googleTranslateElementInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-    }
-    </script>
-
-
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    </body>
-</form>
