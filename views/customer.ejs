@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Customer Page</title>
+    <link rel="stylesheet" href="style/customer.css"></head>
+</head>
+
+<body>
+    
+    <div id= "fixedTop">
+
+        <div id="google_translate_element">
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                }
+            </script>
+
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </div>
+
+        <div id= "orderButton">
+            <a href="customerorderpage">My Order</a>
+        </div>
+
+        <div class= "chick-fil-a-logo">
+            <img src="./images/chick-fil-a-logo.png" alt="logo"/>
+        </div>
+
+        <div class="hr"><hr /></div>
+            <ul id="nav">
+                <li><a href="customerentrees">Entrees</a></li>
+                <li><a href="customerwaffle_fries">Waffle Fries</a></li>
+                <li><a href="customernuggets">Nugget Entrees</a></li>
+                <li><a href="customersides">Sides</a></li>
+                <li><a href="customerdrinks">Drinks</a></li>
+                <li><a href="customerdesserts">Desserts</a></li>
+                <li><a href="customersalads">Salads</a></li>
+                <li><a href="customerdressings">Dressings</a></li>
+                <li><a href="customersauces">Sauces</a></li>
+            </ul>
+        <div class="hr"><hr /></div>
+    </div>
+
+    <div id="items">
+        <h3>Entrees</h3>
+        <div id="grid-container">
+        <% for (var i in entree_items) {%>
+                <div id="grid-item">
+                    <img src="<%=entree_items[i].image%>" width= 350vw height= 350vw id=foodpictures/>
+                    <p><%=entree_items[i].name%></p>
+                    <p>$<%=entree_items[i].price%></p>
+                    
+                    
+                    <form class='form' action='customerentreeform' method='post'> 
+                        <div class="popup" onclick="myFunction()">
+                            <input type="submit" name="name" id= "add-item" value="Add to Order">
+                            <span class="popuptext" id="myPopup">Item Added!</span>
+                        </div>
+                        <input type="hidden" name="itemid" value="<%=entree_items[i].id%>">
+                        <input type="hidden" name="itemname" value="<%=entree_items[i].name%>">
+                        <input type="hidden" name="itemprice" value="<%=entree_items[i].price%>">
+                    </form>
+                </div>
+        <% } %>
+    </div>
+
+    <script>
+        // When the user clicks on div, open the popup
+        function myFunction() {
+            var popup = document.getElementById("myPopup");
+
+            if(popup.classList.contains("show")) {
+    	        return
+            }
+
+            popup.classList.toggle("show");
+        
+            if(popup.classList.contains("show")) // Check if the popup is shown
+             setTimeout(() => popup.classList.remove("show"), 2500) // If yes hide it after 10000 milliseconds
+            
+        }
+    </script>
+    <br>
+    <br>
+    <br>
+</body>

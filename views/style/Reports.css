@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 * {
-    box-sizing: border-box;
+    
     margin: 0;
     padding: 0;
     font-family: "Montserrat", sans-serif;
@@ -9,6 +9,7 @@
 .form {
     font-family: sans-serif;
     font-size: 16px;
+    padding-left: 100px;
 }
 .form * {
     box-sizing: border-box;
@@ -133,10 +134,11 @@ button:hover {
 
 div {
     overflow:hidden;
-    overflow-y: scroll;
-    height: 500px;
+    height: 800px;
     align-content: center;
     border: 1px black;
+    align-self: center;
+    align-items: center;
 }
 
 h1 {
@@ -212,6 +214,7 @@ h4{
     color: black;
     border-color: black;
     border:1px solid black;
+    
 }
 
 .child {
@@ -221,11 +224,3 @@ h4{
 }
 
 
-/* .divScroll {
-    overflow:hidden;
-    overflow-y: scroll;
-    height: 300px;
-    align-content: center;
-    border: 1px black;
-    text-align: center;
-} */

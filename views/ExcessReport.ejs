@@ -23,19 +23,17 @@
         <table border = "1">
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Menu_id</th>
-                    <th>Count</th>
-                    <th>Quantity</th>
+                    <th>Item Name</th>
+                    <th>Inventory Quantity</th>
+                    <th>Units Sold</th>
                 </tr>
             </thead>
             <tr>
                 <tbody>
                     <% for (var i in sales) { %>
-                        <td><%=sales[i].date %></td>
-                        <td><%=sales[i].menu_id %></td>
-                        <td><%=sales[i].count %></td>
+                        <td><%=sales[i].name %></td>
                         <td><%=sales[i].quantity %></td>
+                        <td><%=sales[i].sum %></td>
                         </tr>
                     <% } %>
                 </tbody>

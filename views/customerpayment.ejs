@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="style/customer.css"></head>
+</head>
+
+<body>
+    <div id= "fixedTop">
+
+        <div id="google_translate_element">
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                }
+            </script>
+
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </div>
+
+        <div id= "orderButton">
+            <a href="customerorderpage">My Order</a>
+        </div>
+
+        <div class= "chick-fil-a-logo">
+            <img src="./images/chick-fil-a-logo.png" alt="logo"/>
+        </div>
+
+        <div class="hr"><hr /></div>
+            <ul id="nav">
+                <li><a href="customerentrees">Entrees</a></li>
+                <li><a href="customerwaffle_fries">Waffle Fries</a></li>
+                <li><a href="customernuggets">Nugget Entrees</a></li>
+                <li><a href="customersides">Sides</a></li>
+                <li><a href="customerdrinks">Drinks</a></li>
+                <li><a href="customerdesserts">Desserts</a></li>
+                <li><a href="customersalads">Salads</a></li>
+                <li><a href="customerdressings">Dressings</a></li>
+                <li><a href="customersauces">Sauces</a></li>
+            </ul>
+        <div class="hr"><hr /></div>
+    </div>
+
+    <div id="items">
+        <h3>Payment</h3>
+
+        <div id="payment-left">
+
+            <div id= "orderbackButton">
+                <a href="customerorderpage">Back to Order</a>
+            </div>
+
+            <div id="name-input">
+                <form>
+                    <label for="fname"><b>First name:</b></label><br>
+                    <input type="text" id="fname" name="fname"><br>
+                    <br>
+                    <label for="lname"><b>Last name:</b></label><br>
+                    <input type="text" id="lname" name="lname">
+                </form>
+            </div>
+
+            <div id="payment-type-input">
+                <form>
+                    <input type="radio" id="Credit" name="payment_type" value="Credit">
+                    <label for="Credit">Credit</label><br>
+                    <input type="radio" id="Debit" name="payment_type" value="Debit">
+                    <label for="Debit">Debit</label><br>
+                    <input type="radio" id="Campus_card" name="payment_type" value="Campus_card">
+                    <label for="Campus_card">Campus Card</label><br>
+                </form>
+                <div id="note">
+                    <br>
+                    <p><b>Please insert/swipe card, then submit order!</b></p>
+                    <br>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="payment-right">
+            <h4>My Order</h4>
+
+            <%var totalprice = 0.0;%>
+            <%for (var j = 0; j < current_items.length; j++) {%>
+                <div id="listing-items2">
+
+                    <div id="listing-items-name2">
+                        <p><%=current_items[j].item_name%></p>
+                    </div>
+
+
+                    <div id="listing-items-price2">
+                        <p><%=current_items[j].item_price%></p>
+                    </div>
+                </div>
+            
+                <%totalprice = totalprice + current_items[j].item_price;%>
+            <% } %>
+            
+
+            <hr class= "new2">  
+
+            <div id="total-design">
+                <p>Total: $<%=Math.round(totalprice*100) / 100%></p>
+            </div>
+        </div>
+
+        <div id= 'submit-css'>
+            <form class='form' action='customerdeletetable' href= "#" method='post'> 
+                <input type="submit" onclick= "alert('Order Submitted!')" name="name" href= "#" id= "add-item" value="Submit Order">
+                <input type="hidden" name="totalprice" value="<%=Math.round(totalprice*100) / 100%>">
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+  
+
+</body>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Order Page</title>
+    <link rel="stylesheet" href="style/customer.css"></head>
+</head>
+
+<body>
+    <div id= "fixedTop">
+
+        <div id="google_translate_element">
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                }
+            </script>
+
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </div>
+
+        <div id= "orderButton">
+            <a href="customerorderpage">My Order</a>
+        </div>
+
+        <div class= "chick-fil-a-logo">
+            <img src="./images/chick-fil-a-logo.png" alt="logo"/>
+        </div>
+
+        <div class="hr"><hr /></div>
+            <ul id="nav">
+                <li><a href="customerentrees">Entrees</a></li>
+                <li><a href="customerwaffle_fries">Waffle Fries</a></li>
+                <li><a href="customernuggets">Nugget Entrees</a></li>
+                <li><a href="customersides">Sides</a></li>
+                <li><a href="customerdrinks">Drinks</a></li>
+                <li><a href="customerdesserts">Desserts</a></li>
+                <li><a href="customersalads">Salads</a></li>
+                <li><a href="customerdressings">Dressings</a></li>
+                <li><a href="customersauces">Sauces</a></li>
+            </ul>
+        <div class="hr"><hr /></div>
+    </div>
+
+    <div id="items">
+        <h3>My Order</h3>
+
+        
+        
+        <%var totalprice = 0.0;%>
+        <%for (var j = 0; j < current_items.length; j++) {%>
+            <div id="listing-items">
+
+                <form class='form' action='customerdeleteitem' method='post'>
+                    
+                    <div class="popup" onclick="myFunction()">
+                        <input type="submit" name="name" id= "delete-item" value="Delete">
+                        <span class="popuptext" id="myPopup">Item Deleted!</span>
+                    </div>
+                    <input type="hidden" name="currentitemid" value="<%=current_items[j].item_id%>">
+                    <input type="hidden" name="currentrowid" value="<%=current_items[j].row_id%>">
+                </form>
+
+
+                <div id="listing-items-name">
+                    <p><%=current_items[j].item_name%></p>
+                </div>
+
+
+                <div id="listing-items-price">
+                    <p><%=current_items[j].item_price%></p>
+                </div>
+            </div>
+        
+            <%totalprice = totalprice + current_items[j].item_price;%>
+        <% } %>
+        
+
+        <hr class= "new1">  
+
+        <div id="total-design">
+            <p>Total: $<%=Math.round(totalprice*100) / 100%></p>
+        </div>
+
+        
+        <div id= "payButton">
+            <a href="customerpayment">Process Payment</a>
+        </div>
+    </div>
+
+
+    <script>
+        // When the user clicks on div, open the popup
+        function myFunction() {
+            var popup = document.getElementById("myPopup");
+
+            if(popup.classList.contains("show")) {
+    	        return
+            }
+
+            popup.classList.toggle("show");
+        
+            if(popup.classList.contains("show")) // Check if the popup is shown
+            setTimeout(() => popup.classList.remove("show"), 2000) // If yes hide it after 10000 milliseconds
+            
+        }
+    </script>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>

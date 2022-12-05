@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <title>Server Page</title>
+    <link rel="stylesheet" href="style/server.css"></head>
+</head>
+<body>
+
+    <div class="page">
+
+        <div class="order">
+            <img src="./images/chick-fil-a-logo.png" alt="chick-fil-a-logo">
+            <h2> Order </h2>
+            
+            <%var totalprice = 0.0;%>
+            <%var id_num = 0;%>
+
+            <% for (var i=0; i<1; i++) {%>
+                <%id_num = orders[0].id + 1;%>
+            <% } %>
+            <h4> Order # <%=id_num%> </h4>
+
+            <h5> Click on item to remove from order </h5>
+
+            <% for (var i=0, len=current_items.length; i<len; i++) {%>
+
+                
+                
+                <div id="listing-items">
+                    <form class='form' action='deleteitem' method='post'>
+                        <input class="button2" type="submit" name="name" id= "add-item" value="<%=current_items[i].item_name%>">
+                        <input type="hidden" name="currentitemid" value="<%=current_items[i].item_id%>">
+                        <input type="hidden" name="currentrowid" value="<%=current_items[i].row_id%>">
+                    </form>
+                </div>
+
+                <%totalprice = totalprice + current_items[i].item_price;%>
+                
+            <% } %>
+            <h4 style="padding-bottom:60px;"> Total Price: $ <%=Math.round(totalprice*100) / 100%> </h4>
+            
+            <form class='form' onclick= "alert('Order Submitted')" action='deletetable' method='post'> 
+                <input class="submit" type="submit" name="name" id= "add-item" value="Submit">
+                <input type="hidden" name="totalprice" value="<%=Math.round(totalprice*100) / 100%>">
+            </form>
+
+            <a href="start" class="back"> Back </a>
+        </div>
+
+        <div class="buttons" id="categories">
+            <div class="grid-container">
+                <a href="entrees" class="grid-item" onclick="clear()"> <h1> Entrees </h1> </a>
+                <a href="waffle_fries" class="grid-item"> <h1> Waffle Fries </h1> </a>
+                <a href="nuggets" class="grid-item"> <h1> Nugget Entrees </h1> </a>  
+                <a href="sides" class="grid-item"> <h1> Sides </h1> </a>
+                <a href="drinks" class="grid-item"> <h1> Drinks </h1> </a>
+                <a href="desserts" class="grid-item"> <h1> Desserts </h1> </a>
+                <a href="salads" class="grid-item"> <h1> Salads </h1> </a>
+                <a href="dressings" class="grid-item"> <h1> Dressings </h1> </a>
+                <a href="sauces" class="grid-item"> <h1> Sauces </h1> </a>
+            </div>
+        </div>
+
+        
+        
+
+    </div> 
+
+    <script src="server_funcs.js"></script>        
+       
+</body>

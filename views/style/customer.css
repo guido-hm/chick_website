@@ -1,0 +1,450 @@
+#nav {
+	width: 100%;
+	float: left;
+	margin: 0;
+	padding: 0;
+	display: flex;
+  	justify-content: space-around;
+	list-style: none; 
+}
+
+#nav li a {
+	display: block;
+	padding: 8px 15px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #069;
+}
+
+#nav li a:hover {
+	background-color: #bde0ff;
+}
+
+
+hr {
+	border: 10;
+	width: 97%;
+	margin: 0 auto;
+}
+
+.chick-fil-a-logo {
+	display: flex;
+	list-style: none; 
+	align-items: center;
+	justify-content: center;
+}
+
+h2 {
+	display: inline-flex;
+	font-weight: bold;
+	color: white;
+	font-size: 25px;
+}
+
+#orderButton a {
+	display: flex;
+	font-weight: bold;
+	color: white;
+	font-size: 25px;
+	text-decoration: none;
+}
+
+#orderButton {
+	background-color: #911d0e;
+	border: none;
+	color: white;
+	padding: 3px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	border: 2px solid #911d0e;
+	border-radius: 12px;
+	display: flex;
+	float: right;
+}
+
+#orderButton:hover {
+	background-color: white;
+	border: 2px solid #911d0e;
+}
+
+#orderButton a:hover {
+	color: #911d0e;
+}
+
+
+#fixedTop {
+	position: fixed;
+	width: 100vw;
+	background-color: white;
+	z-index: 50;
+	top: 0;
+}
+
+#items {
+	position: relative;
+	top: 14vw;
+	bottom: 200vw;
+}
+
+#items h3 {
+	position: flex;
+	color:black;
+	font-weight: bold;
+	font-size: 50px;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	text-decoration: underline;
+	margin-bottom: 0%;
+}
+
+#grid-item {
+
+    padding-top: 70px;
+    
+    justify-content: center;
+    align-items: center;    
+    text-decoration: none;
+
+    vertical-align: middle;
+
+    text-align: center;
+    text-size-adjust: 20px;
+}
+
+#grid-container {
+	display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(minmax(0, 1fr));
+    grid-template-rows: repeat(minmax(0, 1fr));
+}
+
+#add-item a {
+	display: flex;
+	font-weight: bold;
+	color: white;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+#add-item {
+	background-color: #911d0e;
+	border: none;
+	color: white;
+	padding: 3px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	border: 2px solid #911d0e;
+	border-radius: 12px;
+
+	font-weight: bold;
+	color: white;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+#add-item:hover {
+	background-color: white;
+	border: 2px solid #911d0e;
+	color: #911d0e;
+}
+
+#foodpictures {
+	display: flex;
+	list-style: none; 
+	align-items: center;
+	justify-content: center;
+	width: 350vw;
+	height: auto;
+}
+
+#listing-items {
+	display: flex;
+	position: relative;
+	margin: 0 auto;
+	margin-top: 10px;
+	align-items: center;
+}
+
+#delete-item {
+	background-color: #911d0e;
+	border: none;
+	color: white;
+	padding: 3px 10px;
+	text-align: center;
+	text-decoration: none;
+	border: 2px solid #911d0e;
+	border-radius: 12px;
+
+	display: inline-block;
+	position: relative;
+	left: 28vw;
+
+	font-weight: bold;
+	color: white;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+#delete-item:hover {
+	background-color: white;
+	border: 2px solid #911d0e;
+	color: #911d0e;
+}
+
+#listing-items-name {
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	left: 30vw;
+}
+
+#listing-items-price {
+	text-align: center;
+	display: inline-block;
+	position: sticky;
+	left: 60vw;
+}
+
+
+#total-design {
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	left: 46vw;
+
+	margin-top:25px;
+}
+
+#total-design p {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+hr.new1 {
+	border: 10;
+	width: 60%;
+	margin: 0 auto;
+}
+
+#submit-css {
+	margin-top: 29vw;
+	margin-bottom: 0%;
+	float: right;
+	position: absolute;
+	/* position: fixed;
+    bottom: 6vw;
+	left: 7vw; */
+	left: 5vw;
+	cursor: pointer;
+}
+
+#payButton {
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	display: flex;
+	font-weight: bold;
+	color: white;
+	font-size: 12px;
+	text-decoration: none;
+	margin-top: 3vw;
+}
+
+#payButton a {
+	background-color: #911d0e;
+	border: none;
+	color: white;
+	padding: 3px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	border: 2px solid #911d0e;
+	border-radius: 12px;
+
+	font-weight: bold;
+	color: white;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+#payButton a:hover {
+	background-color: white;
+	border: 2px solid #911d0e;
+	color: #911d0e;
+}
+
+#payment-type-input, #name-input {
+	margin-top: 3vw;
+	margin-left: 2vw;
+}
+
+#orderbackButton {
+	margin-left: 3vw;
+	position: relative;
+	display: flex;
+	font-weight: bold;
+	color: white;
+	font-size: 12px;
+	text-decoration: none;
+	margin-top: 3vw;
+}
+
+#orderbackButton a {
+	background-color: #911d0e;
+	border: none;
+	color: white;
+	padding: 3px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	border: 2px solid #911d0e;
+	border-radius: 12px;
+
+	font-weight: bold;
+	color: white;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+#orderbackButton a:hover {
+	background-color: white;
+	border: 2px solid #911d0e;
+	color: #911d0e;
+}
+
+#payment-left {
+	/* display: inline-block;
+	position: relative;
+	justify-content: flex-start;
+	align-items: flex-start; */
+	width: 50vw;
+	float: left;
+	margin-left: 3vw;
+}
+
+#payment-right {
+	/* display: inline-block;
+	position: relative; */
+	float: left;
+	left: 0%;
+	margin-left: -23vw;
+}
+
+#listing-items2 {
+	display: flex;
+	position: relative;
+	margin: 0 auto;
+	margin-top: 10px;
+	align-items: center;
+}
+
+#listing-items-name2 {
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	left: 35vw;
+}
+
+#listing-items-price2 {
+	text-align: center;
+	display: inline-block;
+	position: absolute;
+	left: 60vw;
+}
+
+#payment-right h4 {
+	position: relative;
+	color:black;
+	font-weight: bold;
+	font-size: 25px;
+	text-align: right;
+	margin-bottom: 0%;
+	left: 22vw;
+}
+
+hr.new2 {
+	border: 10;
+	width: 100%;
+	margin: 0 auto;
+	margin-left: 32vw;
+}
+
+#google_translate_element {
+	margin: 0 auto;
+	margin-bottom: 0%;
+}
+
+
+
+/* Popup container - can be anything you want */
+.popup {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+  
+/* The actual popup */
+.popup .popuptext {
+	visibility: hidden;
+	width: 100vw;
+	background-color: green;
+	color: #fff;
+	text-align: center;
+	padding: 8px 0;
+	position: fixed;
+	z-index: 100;
+	left: 0vw;
+	top: 0vw;
+	font-weight: bold;
+}
+  
+  /* Toggle this class - hide and show the popup */
+.popup .show {
+	visibility: visible;
+	-webkit-animation: fadeIn 1s;
+	animation: fadeIn 1s;
+}
+  
+  /* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+	from {opacity: 0;} 
+	to {opacity: 1;}
+}
+  
+@keyframes fadeIn {
+	from {opacity: 0;}
+	to {opacity:1 ;}
+}
+
+#orderdetscss {
+	top: 4vw;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+#orderdetscss h5 {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+#orderdetscss h6 {
+	font-size: 20px;
+	font-weight: lighter;
+	margin: 2vw;
+}

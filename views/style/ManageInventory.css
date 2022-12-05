@@ -132,8 +132,7 @@ button:hover {
 }
 
 div {
-    overflow:hidden;
-    overflow-y: scroll;
+    
     height: 500px;
     align-content: center;
     border: 1px black;
@@ -158,6 +157,13 @@ h4{
     text-align: left;
     font-size: 40px;
     padding-left: 240px;
+    padding-top: 30px;
+}
+h5{
+    color: red;
+    text-align: center;
+    font-size: 40px;
+    
     padding-top: 30px;
 }
 .content-table{

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+    <title>Item Page</title>
+    <link rel="stylesheet" href="style/server.css"></head>
+<body>
+    <div class="page">
+
+        <div class="order">
+            <img src="./images/chick-fil-a-logo.png" alt="chick-fil-a-logo">
+            <h2> Order </h2>
+            
+            <%var totalprice = 0.0;%>
+            <%var id_num = 0;%>
+
+            <% for (var i=0; i<1; i++) {%>
+                <%id_num = orders[0].id + 1;%>
+            <% } %>
+            <h4> Order # <%=id_num%> </h4>
+
+            <h5> Click on item to remove from order </h5>
+
+            <% for (var i=0, len=current_items.length; i<len; i++) {%>
+
+                
+                
+                <div id="listing-items">
+                    <form class='form' action='deleteitem' method='post'>
+                        <input class="button2" type="submit" name="name" id= "add-item" value="<%=current_items[i].item_name%>">
+                        <input type="hidden" name="currentitemid" value="<%=current_items[i].item_id%>">
+                        <input type="hidden" name="currentrowid" value="<%=current_items[i].row_id%>">
+                    </form>
+                </div>
+
+                <%totalprice = totalprice + current_items[i].item_price;%>
+                
+            <% } %>
+            <h4> Total Price: $ <%=Math.round(totalprice*100) / 100%> </h4>
+            
+            <form class='form' onclick="alert('Order Submitted')" action='deletetable' method='post'> 
+                <input class="submit" type="submit" name="name" id= "add-item" value="Submit">
+                <input type="hidden" name="totalprice" value="<%=Math.round(totalprice*100) / 100%>">
+            </form>
+
+            <a href="server" class="back"> Back </a>
+        </div>
+
+        <div class="buttons">
+            <div class="grid-container">
+                <div class="grid-item title"> <h1 class="title"> Entrees </h1> </div>
+                <% for (var i in nugget_items) { %>
+                    <div class="grid-item"> 
+                    <form class='form' action='entreeform' method='post'> 
+                        <input class="button" type="submit" name="name" id= "add-item" value="">
+                        <input type="hidden" name="itemid" value="<%=nugget_items[i].id%>">
+                        <input type="hidden" name="itemname" value="<%=nugget_items[i].name%>">
+                        <input type="hidden" name="itemprice" value="<%=nugget_items[i].price%>">
+                    </form>
+                    <h1> <%=nugget_items[i].name%> </h1>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+
+    </div>  
+
+    <script src="server_funcs.js"></script>    
+
+</body>
