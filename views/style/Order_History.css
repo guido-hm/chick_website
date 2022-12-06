@@ -49,8 +49,7 @@ button:hover {
 }
 
 div {
-    overflow:hidden;
-    overflow-y: scroll;
+    
     height: 500px;
     align-content: center;
     border: 1px black;

@@ -62,20 +62,25 @@ app.get('/', (req, res) => {
 
 // entrees
 /**
- * @swagger
- * /entrees:
- *   get:
- *     description: selects all entrees from database and renders the entrees page for server
- *     parameters:
- *       - name: 
- *         in: 
- *         description:
- *         required: false
- *     responses:
- *       name_of_response:
- *         description: 
- * 
- */
+* @swagger
+* /entrees:
+*   get:
+*     tags:
+*       - Server Entrees
+*     summary: Getting Entrees for Server side
+*     description: Reading from the database the menu items that are under the 'entrees' category.
+*     parameters:
+*       - name: entree_items
+*         in: query
+*         description: is a list of entree items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 app.get('/entrees', checkAuthenticatedServer, (req, res) => {
     entree_items = []
     pool
@@ -91,6 +96,26 @@ app.get('/entrees', checkAuthenticatedServer, (req, res) => {
 });
 
 // waffle fries
+/**
+* @swagger
+* /waffle_fries:
+*   get:
+*     tags:
+*       - Server Waffle Fries
+*     summary: Getting Waffle Fries for Server side
+*     description: Reading from the database the menu items that are under the 'waffle fries' category.
+*     parameters:
+*       - name: waf_items
+*         in: query
+*         description: is a list of waffle fries items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 app.get('/waffle_fries', checkAuthenticatedServer, (req, res) => {
     waf_items = []
     pool
@@ -105,6 +130,26 @@ app.get('/waffle_fries', checkAuthenticatedServer, (req, res) => {
 });
 
 // nugget entrees
+/**
+* @swagger
+* /nuggets:
+*   get:
+*     tags:
+*       - Server Nugget Entrees
+*     summary: Getting Nugget Entrees for Server side
+*     description: Reading from the database the menu items that are under the 'nugget entrees' category.
+*     parameters:
+*       - name: nugget_items
+*         in: query
+*         description: is a list of nugget entree items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 app.get('/nuggets', checkAuthenticatedServer, (req, res) => {
     nugget_items = []
     pool
@@ -119,6 +164,27 @@ app.get('/nuggets', checkAuthenticatedServer, (req, res) => {
 });
 
 // sides
+/**
+* @swagger
+* /sides:
+*   get:
+*     tags:
+*       - Server Sides
+*     summary: Getting Sides for Server side
+*     description: Reading from the database the menu items that are under the 'sides' category.
+*     parameters:
+*       - name: sides
+*         in: query
+*         description: is a list of side items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 app.get('/sides', checkAuthenticatedServer, (req, res) => {
     sides = []
     pool
@@ -133,6 +199,27 @@ app.get('/sides', checkAuthenticatedServer, (req, res) => {
 });
 
 // drinks
+/**
+* @swagger
+* /drinks:
+*   get:
+*     tags:
+*       - Server Drinks
+*     summary: Getting Drinks for Sever side
+*     description: Reading from the database the menu items that are under the 'drinks' category.
+*     parameters:
+*       - name: drinks
+*         in: query
+*         description: is a list of drink items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 app.get('/drinks', checkAuthenticatedServer, (req, res) => {
     drinks = []
     pool
@@ -147,6 +234,27 @@ app.get('/drinks', checkAuthenticatedServer, (req, res) => {
 });
 
 // desserts
+/**
+* @swagger
+* /desserts:
+*   get:
+*     tags:
+*       - Server Desserts
+*     summary: Getting Desserts for Server side
+*     description: Reading from the database the menu items that are under the 'desserts' category.
+*     parameters:
+*       - name: desserts
+*         in: query
+*         description: is a list of dessert items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 app.get('/desserts', checkAuthenticatedServer, (req, res) => {
     desserts = []
     pool
@@ -161,6 +269,27 @@ app.get('/desserts', checkAuthenticatedServer, (req, res) => {
 });
 
 // salads
+/**
+* @swagger
+* /salads:
+*   get:
+*     tags:
+*       - Server Salads
+*     summary: Getting Salads for Server side
+*     description: Reading from the database the menu items that are under the 'salads' category.
+*     parameters:
+*       - name: salads
+*         in: query
+*         description: is a list of salad items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 app.get('/salads', checkAuthenticatedServer, (req, res) => {
     salads = []
     pool
@@ -175,6 +304,27 @@ app.get('/salads', checkAuthenticatedServer, (req, res) => {
 });
 
 // dressings
+/**
+* @swagger
+* /dressings:
+*   get:
+*     tags:
+*       - Server Dressings
+*     summary: Getting Dressings for Server side
+*     description: Reading from the database the menu items that are under the 'dressings' category.
+*     parameters:
+*       - name: dressings
+*         in: query
+*         description: is a list of dressing items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 app.get('/dressings', checkAuthenticatedServer, (req, res) => {
     dressings = []
     pool
@@ -189,6 +339,27 @@ app.get('/dressings', checkAuthenticatedServer, (req, res) => {
 });
 
 // sauces
+/**
+* @swagger
+* /sauces:
+*   get:
+*     tags:
+*       - Server Sauces
+*     summary: Getting Sauces for Server side
+*     description: Reading from the database the menu items that are under the 'sauces' category.
+*     parameters:
+*       - name: sauces
+*         in: query
+*         description: is a list of sauce items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 app.get('/sauces', checkAuthenticatedServer, (req, res) => {
     sauces = []
     pool
@@ -201,6 +372,17 @@ app.get('/sauces', checkAuthenticatedServer, (req, res) => {
             res.render('sauces', data);
         });
 });
+
+/**
+* @swagger
+* /entreeform:
+*   post:
+*     tags:
+*       - Server Current Order
+*     summary: Inserts to 'current_order' table
+*     description: Inserts into 'current_order' table in database to keep track of what items the customer has added to their cart.
+*
+*/
 
 app.post('/entreeform', checkAuthenticatedServer, (req, res) => {
    
@@ -219,6 +401,16 @@ app.post('/entreeform', checkAuthenticatedServer, (req, res) => {
     res.redirect('/server');
 });
 
+/**
+* @swagger
+* /deleteitem:
+*   post:
+*     tags:
+*       - Server Delete Item
+*     summary: Deletes item from 'current_order' table
+*     description: Deletes the item the customer had selected that was in their cart. Essentially, deletes the row containing that item from the 'current_order' table in the database.
+*
+*/
 
 app.post('/deleteitem', (req, res) => {
 
@@ -231,6 +423,25 @@ app.post('/deleteitem', (req, res) => {
  
     res.redirect('/server');
 });
+
+/**
+* @swagger
+* /deletetable:
+*   post:
+*     tags:
+*       - Server Submits Order
+*     summary: Server Submits Order
+*     description: When server submits their order, their order in table 'current_order' is copied to the 'orders' and 'order_items' table then deleted from 'current_order'. 
+*     parameters:
+*       - name: date
+*         in: query
+*         description: a variable holding the current date.
+*         required: false
+*       - name: timestamp
+*         in: query
+*         description: a variable holding the timestamp formatting needed to be inserted into the 'orders' table in the database.
+*         required: false
+*/
 
 app.post('/deletetable', (req, res) => {
 
@@ -268,6 +479,26 @@ app.post('/deletetable', (req, res) => {
 
 });
 
+/**
+* @swagger
+* /server:
+*   get:
+*     tags:
+*       - Server
+*     summary: Getting current order for Server side
+*     description: Reading from the database the current order items that are under the server category.
+*     parameters:
+*       - name: current_items
+*         in: query
+*         description: is a list of menu items from the current order
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 app.get('/server', checkAuthenticatedServer, (req, res) => {
     // select current_order
     current_items = []
@@ -286,7 +517,26 @@ app.get('/server', checkAuthenticatedServer, (req, res) => {
         });
 });
 
-
+/**
+* @swagger
+* /start:
+*   get:
+*     tags:
+*       - Server Start Order
+*     summary: Getting next order number
+*     description: Reading from the database the current order number to use when submitting the order.
+*     parameters:
+*       - name: orders
+*         in: query
+*         description: contains the order number
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 app.get('/start',checkAuthenticatedServer, (req, res) => {
     orders = []
     
@@ -303,9 +553,24 @@ app.get('/start',checkAuthenticatedServer, (req, res) => {
 });
 
 // SERVER LOGIN
+/**
+ * @swagger
+ * /serverLogin:
+ *   get:
+ *     description: Renders the serverLogin
+ * 
+ */
+
 app.get('/serverLogin', (req, res) => {
     res.render('serverLogin');
 });
+
+/**
+ * @swagger
+ * /serverLogin:
+ *   post:
+ *     description: Verifies token with google API. If token is verified, a session-token cookie is created. Else, error is thrown to console and no cookie is created
+ */
 
 app.post('/serverLogin', (req, res) => {
     let token = req.body.token;
@@ -329,11 +594,30 @@ app.post('/serverLogin', (req, res) => {
       }).catch(console.error);
 });
 
+/**
+ * @swagger
+ * /serverLogout:
+ *   get:
+ *     description: Clears the session-token cookie and renders the index page.
+ * 
+ */
+
 app.get('/serverLogout', (req, res)=>{
     res.clearCookie('session-token');
     res.redirect('/')
 })
 
+/**
+ * @swagger
+ * /checkAuthenticatedServer:
+ *   get:
+ *     description: Makes sure that the user has the appropiate cookie (permission) to access a page
+ *     parameters:
+ *       - name: token
+ *         description: token is the cookie called "session-token". if the proper cookie is owned by the user, then they are given access
+ *         required: false
+ * 
+ */
 function checkAuthenticatedServer(req, res, next){
     let token = req.cookies['session-token'];
 
@@ -784,7 +1068,26 @@ app.post('/customerdeletetable', (req, res) => {
 });
 
 
-
+/**
+* @swagger
+* /customer:
+*   get:
+*     tags:
+*       - First Customer Page
+*     summary: Gets Entrees for Customer side
+*     description: Reading from the database the menu items that are under the 'entrees' category.
+*     parameters:
+*       - name: entree_items
+*         in: query
+*         description: is a list of entree items from the menu
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 app.get('/customer', (req, res) => {
     entree_items = []
     pool
@@ -991,26 +1294,76 @@ function checkAuthenticated(req, res, next){
     })
 }
 
+/**
+* @swagger
+* /ManagerHome:
+*   get:
+*     description: Renders the Manager Home main page
+*/
+
 // MANAGER HOME PAGE
 app.get('/ManagerHome', checkAuthenticated, (req, res) => {
     let user = req.user;
     res.render('ManagerHome', {user});
 });
 
+/**
+* @swagger
+* /ManageInventory:
+*   get:
+*     tags:
+*       - Page of operations to manage inventory
+*     summary: Manager view all operations that can be perfomed on inventory
+*     description: Manager can Update inventory, add and delete item
+*     parameters:
+*       - name: inventory_items
+*         in: query
+*         description: a list holding all items from inventory
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 // MANAGING INVENTORY
 app.get('/ManageInventory', checkAuthenticated, (req, res) => {
     inventory_items = []
-    let user = req.user;
     pool
         .query('SELECT * FROM inventory;')
         .then(query_res => {
             for (let i = 0; i < query_res.rowCount; i++){
                 inventory_items.push(query_res.rows[i]);
             }
-            const data = {inventory_items: inventory_items, user};
+            const data = {inventory_items: inventory_items};
             res.render('ManageInventory', data);
         });
 });
+
+/**
+* @swagger
+* /update_inventory:
+*   post:
+*     tags:
+*       - Form to update inventory
+*     summary: Data on how to update inventory is received
+*     description: Manager can update inventory with data received from user,
+*                  once manager hits submit, Manager Homep page is rendered with
+*                  changes.
+*     parameters:
+*       - name: inventory_items
+*         in: query
+*         description: a list holding all items from inventory
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 
 
 // UPDATING INVENTORY
@@ -1036,6 +1389,27 @@ app.post('/update_inventory', (req, res) => {
         });
 });
 
+/**
+* @swagger
+* /update_inventory:
+*   get:
+*     tags:
+*       - Updated inventory page
+*     summary: Manager Page with updated inventory
+*     description: render Manager home page with updated inventory
+*     parameters:
+*       - name: inventory_items
+*         in: query
+*         description: a list holding all items from inventory
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 app.get('/update_inventory', (req, res) => {
 
     inventory_items = []
@@ -1049,6 +1423,17 @@ app.get('/update_inventory', (req, res) => {
             res.render('ManageInventory', data);
         });
 });
+
+/**
+* @swagger
+* /add_inventory:
+*   post:
+*     tags:
+*       - Add item to inventory
+*     summary: Add item to inventory with user data
+*     description: Manager can add item to inventory 
+*
+*/
 
 
 // ADDING ITEM TO INVENTORY
@@ -1065,11 +1450,33 @@ app.post('/add_inventory', (req, res) => {
     res.redirect('/ManageInventory');
 });
 
+/**
+* @swagger
+* /add_inventory:
+*   get:
+*     tags:
+*       - Add item to inventory
+*     summary: Manager page is rendered with updated inventory
+*     description: Manager Inventory page is rendered.
+*
+*/
+
 app.get('/add_inventory', (req, res) => {
 
     res.redirect('/ManageInventory');
 
 });
+
+/**
+* @swagger
+* /delete_inventory:
+*   post:
+*     tags:
+*       - Deleting item from inventory
+*     summary: Delete item from inventory usring user data
+*     description: Manager can delete item from inventory
+*
+*/
 
 // DELETING ITEM FROM INVENTORY
 app.post('/delete_inventory', (req, res) => {
@@ -1086,16 +1493,44 @@ app.post('/delete_inventory', (req, res) => {
     
 });
 
+/**
+* @swagger
+* /delete_inventory:
+*   get:
+*     description: ManageInventory page is rendered with updated inventory
+*
+*/
+
 app.get('/delete_inventory', (req, res) => {
 
     res.redirect('/ManageInventory');
 
 });
 
+/**
+* @swagger
+* /Order_History:
+*   get:
+*     tags:
+*       - Order History Page
+*     summary: Page with list of all ordere placed
+*     description: Table of orders contains date order was place and total sales for that day
+*     parameters:
+*       - name: orders
+*         in: query
+*         description: a list holding all orders
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 // MANAGER ORDER HISTORY
 
 app.get('/Order_History', checkAuthenticated, (req, res) => {
-    let user = req.user;
     orders = []
     pool
         .query('SELECT DATE(time_stamp), SUM(CAST(total_price as numeric)) FROM orders GROUP BY 1 ORDER BY 1;;')
@@ -1103,27 +1538,68 @@ app.get('/Order_History', checkAuthenticated, (req, res) => {
             for (let i = 0; i < query_res.rowCount; i++){
                 orders.push(query_res.rows[i]);
             }
-            const data = {orders: orders, user};
+            const data = {orders: orders};
             res.render('Order_History', data);
         });
 });
 
 
+/**
+* @swagger
+* /ManageMenu:
+*   get:
+*     tags:
+*       - Manage Menu Page
+*     summary: Page with list of all operations manager can perform on Menu
+*     description: Chick-Fil-A menu is displayed as well as all operations.
+*     parameters:
+*       - name: menu_items
+*         in: query
+*         description: a list holding all menu items from Chick-Fil-A
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 // MENU BEGINS
 // MANAGING MENU
 app.get('/ManageMenu', checkAuthenticated, (req, res) => {
     menu_items = []
-    let user = req.user;
     pool
         .query('SELECT * FROM menu_items;')
         .then(query_res => {
             for (let i = 0; i < query_res.rowCount; i++){
                 menu_items.push(query_res.rows[i]);
             }
-            const data = {menu_items: menu_items, user};
+            const data = {menu_items: menu_items};
             res.render('ManageMenu', data);
         });
 });
+
+/**
+* @swagger
+* /add_ingredient_to_menuitem:
+*   post:
+*     tags:
+*       - Information of ingredient to be added
+*     summary: Information of ingredient to be added is gathered from user.
+*     description: Ingredient with information from user is added to menu item.
+*     parameters:
+*       - name: menu_items
+*         in: query
+*         description: a list holding all menu items from Chick-Fil-A
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 
 // Add Ingredient
 
@@ -1173,6 +1649,24 @@ app.post('/add_ingredient_to_menuitem', (req, res) => {
         });
 });
 
+/**
+* @swagger
+* /add_ingredient_to_menuitem:
+*   get:
+*     description: Updated ManageMenu page is displayed after adding ingredient.
+*     parameters:
+*       - name: menu_items
+*         in: query
+*         description: a list holding all menu items from Chick-Fil-A
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 app.get('/add_ingredient_to_menuitem', (req, res) => {
 
     menu_items = []
@@ -1186,6 +1680,27 @@ app.get('/add_ingredient_to_menuitem', (req, res) => {
             res.render('ManageMenu', data);
         });
 });
+
+/**
+* @swagger
+* /remove_ingredient_to_menuitem:
+*   post:
+*     tags:
+*       - Information of ingredient to be removed
+*     summary: Information of ingredient to be removed is gathered from user.
+*     description: Ingredient with information from user is removed from menu item.
+*     parameters:
+*       - name: menu_items
+*         in: query
+*         description: a list holding all menu items from Chick-Fil-A
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 
 // Remove Ingredient
 app.post('/remove_ingredient_from_menuitem', (req, res) => {
@@ -1211,6 +1726,25 @@ app.post('/remove_ingredient_from_menuitem', (req, res) => {
         });
 });
 
+/**
+* @swagger
+* /add_ingredient_to_menuitem:
+*   get:
+*     description: Updated ManageMenu page is displayed after removing ingredient.
+*     parameters:
+*       - name: menu_items
+*         in: query
+*         description: a list holding all menu items from Chick-Fil-A
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
+
 app.get('/remove_ingredient_from_menuitem', (req, res) => {
 
     menu_items = []
@@ -1224,6 +1758,27 @@ app.get('/remove_ingredient_from_menuitem', (req, res) => {
             res.render('ManageMenu', data);
         });
 });
+
+/**
+* @swagger
+* /add_menu:
+*   post:
+*     tags:
+*       - Information of menu item to be added
+*     summary: Information of menu item to be added is gathered from user.
+*     description: Menu item with information from user is added to menu.
+*     parameters:
+*       - name: menu_items
+*         in: query
+*         description: a list holding all menu items from Chick-Fil-A
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 
 // Add menu Item
 
@@ -1249,6 +1804,24 @@ app.post('/add_menu', (req, res) => {
         });
 })
 
+/**
+* @swagger
+* /add_menu:
+*   get:
+*     description: Updated ManageMenu page is displayed after adding menu item.
+*     parameters:
+*       - name: menu_items
+*         in: query
+*         description: a list holding all menu items from Chick-Fil-A
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 app.get('/add_menu', (req, res) => {
     menu_items = []
     pool
@@ -1261,6 +1834,27 @@ app.get('/add_menu', (req, res) => {
             res.render('ManageMenu', data);
         });
 })
+
+/**
+* @swagger
+* /delete_menu:
+*   post:
+*     tags:
+*       - Information of menu item to be removed.
+*     summary: Information of menu item to be removed is gathered from user.
+*     description: Menu item with information from user is removed to menu.
+*     parameters:
+*       - name: menu_items
+*         in: query
+*         description: a list holding all menu items from Chick-Fil-A
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 
 // Remove menu Item
 
@@ -1290,6 +1884,24 @@ app.post('/delete_menu', (req, res) => {
     
 })
 
+/**
+* @swagger
+* /delete_menu:
+*   get:
+*     description: Updated ManageMenu page is displayed after deleting menu item.
+*     parameters:
+*       - name: menu_items
+*         in: query
+*         description: a list holding all menu items from Chick-Fil-A
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 app.get('/delete_menu', (req, res) => {
     menu_items = []
     pool
@@ -1305,11 +1917,39 @@ app.get('/delete_menu', (req, res) => {
 
 // REPORTS PAGE AND FUNCTIONALITIES
 
+/**
+* @swagger
+* /Reports:
+*   get:
+*     description: Reports page is rendered
+*
+*/
+
 // Reports main Page
 app.get('/Reports', checkAuthenticated, (req, res) => {
-    let user = req.user;
-    res.render('Reports', {user})
+    res.render('Reports')
 })
+
+/**
+* @swagger
+* /excess_report:
+*   post:
+*     tags:
+*       - Excess report form
+*     summary: Information needed for excess report is gathered from user.
+*     description: Given a timestamp, display the list of items that only sold less than 10% of their inventory between the timestamp and the current  time, assuming no restocks have happened during the window.
+*     parameters:
+*       - name: sales
+*         in: query
+*         description: a list holding all data from query
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 
 app.post('/excess_report', (req, res) => {
     console.log(req.body.name);
@@ -1326,6 +1966,26 @@ app.post('/excess_report', (req, res) => {
         });
 })
 
+/**
+* @swagger
+* /excess_report:
+*   get:
+*     tags:
+*       - Excess report Page
+*     summary: Excess report page displaying information
+*     parameters:
+*       - name: sales
+*         in: query
+*         description: a list holding all data from query
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 app.get('/excess_report', (req, res) => {
     sales = []
     pool
@@ -1338,6 +1998,26 @@ app.get('/excess_report', (req, res) => {
             res.render('Reports', data);
         });
 })
+
+/**
+* @swagger
+* /sales_report:
+*   post:
+*     tags:
+*       - Sales report form
+*     summary: Given a time window, display the sales by item from the order history.
+*     parameters:
+*       - name: sales
+*         in: query
+*         description: a list holding all data from query
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 
 // Sales Report
 app.post('/sales_report', (req, res) => {
@@ -1357,6 +2037,26 @@ app.post('/sales_report', (req, res) => {
 
 })
 
+/**
+* @swagger
+* /sales_report:
+*   get:
+*     tags:
+*       - Sales report Page
+*     summary: Sales report page displaying information
+*     parameters:
+*       - name: sales
+*         in: query
+*         description: a list holding all data from query
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 app.get('/sales_report', (req, res) => {
 
     sales = []
@@ -1372,6 +2072,26 @@ app.get('/sales_report', (req, res) => {
 
 })
 
+/**
+* @swagger
+* /restock_report:
+*   get:
+*     tags:
+*       - Restock report form
+*     summary: Display the list of items whose current inventory is less than the item's minimum amount to have around before needing to restock.
+*     parameters:
+*       - name: sales
+*         in: query
+*         description: a list holding all data from query
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
+
 // Restock Report
 app.get('/RestockReport', (req, res) => {
     sales = []
@@ -1386,6 +2106,26 @@ app.get('/RestockReport', (req, res) => {
         });
 
 })
+
+/**
+* @swagger
+* /what_report:
+*   post:
+*     tags:
+*       - What Report
+*     summary: Given a time window, display a list of pairs of menu items that sell together often, popular or not, sorted by most frequent.
+*     parameters:
+*       - name: sales
+*         in: query
+*         description: a list holding all data from query
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 
 // What Sells Together
 app.post('/what_report', (req, res) => {
@@ -1404,6 +2144,26 @@ app.post('/what_report', (req, res) => {
         });
 
 })
+
+/**
+* @swagger
+* /what_report:
+*   get:
+*     tags:
+*       - What Report Page
+*     summary: Rendere What Report page.
+*     parameters:
+*       - name: sales
+*         in: query
+*         description: a list holding all data from query
+*         required: false
+*         explode: true
+*         schema:
+*           type: array
+*           items:
+*              type: string
+*
+*/
 
 app.get('/what_report', (req, res) => {
 
