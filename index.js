@@ -1264,7 +1264,6 @@ app.get('/managerLogin', (req, res) => {
  */
 app.post('/managerLogin', (req, res) => {
     let token = req.body.token;
-    console.log(token);
     async function verify() {
         const ticket = await client.verifyIdToken({
             idToken: token,
@@ -1299,6 +1298,10 @@ app.post('/managerLogin', (req, res) => {
                 console.log("Error: User Not Found");
             }
         });
+
+        // res.cookie('session-token', token);
+        // console.log("created session-token");
+        // res.send('success');
       }).catch(console.error);
 });
 /**
