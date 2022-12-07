@@ -58,6 +58,25 @@ app.get('/', (req, res) => {
     res.render('index', data);
 });
 
+
+
+function decodeJwtResponse(token) {
+    var base64Url = token.split(".")[1];
+    var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    var jsonPayload = decodeURIComponent(
+    atob(base64)
+        .split("")
+        .map(function (c) {
+        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+
+    return JSON.parse(jsonPayload);
+}
+
+
+
 // SERVER *****************************************************
 
 // entrees
@@ -588,9 +607,27 @@ app.post('/serverLogin', (req, res) => {
       }
       verify()
       .then(()=>{
-        res.cookie('session-token', token);
-        console.log("created session-token");
-        res.send('success');
+        console.log("EMAIL:");
+        const email = decodeJwtResponse(token).email;
+
+        console.log(email);
+        pool.query('SELECT role FROM employee WHERE email=$1',
+        [email], (err, results) => {
+            if (err){
+                console.log("ERROR: Unexpected Error Occured. Could not Log In");
+                console.log(err);
+            } else if (results.rowCount != 0) {
+                if (results.rows[0]['role'] == 'Server' || results.rows[0]['role'] == 'Manager') {
+                    res.cookie('session-token', token);
+                    console.log("created session-token");
+                    res.send('success');
+                } else {
+                    console.log("Error: User does not have permission");
+                }
+            } else {
+                console.log("Error: User Not Found");
+            }
+        });
       }).catch(console.error);
 });
 
@@ -1227,7 +1264,6 @@ app.get('/managerLogin', (req, res) => {
  */
 app.post('/managerLogin', (req, res) => {
     let token = req.body.token;
-    console.log(token);
     async function verify() {
         const ticket = await client.verifyIdToken({
             idToken: token,
@@ -1241,9 +1277,31 @@ app.post('/managerLogin', (req, res) => {
       }
       verify()
       .then(()=>{
-        res.cookie('session-token', token);
-        console.log("created session-token");
-        res.send('success');
+        console.log("EMAIL:");
+        const email = decodeJwtResponse(token).email;
+
+        console.log(email);
+        pool.query('SELECT role FROM employee WHERE email=$1',
+        [email], (err, results) => {
+            if (err){
+                console.log("ERROR: Unexpected Error Occured. Could not Log In");
+                console.log(err);
+            } else if (results.rowCount != 0) {
+                if (results.rows[0]['role'] == 'Manager') {
+                    res.cookie('session-token', token);
+                    console.log("created session-token");
+                    res.send('success');
+                } else {
+                    console.log("Error: User does not have permission");
+                }
+            } else {
+                console.log("Error: User Not Found");
+            }
+        });
+
+        // res.cookie('session-token', token);
+        // console.log("created session-token");
+        // res.send('success');
       }).catch(console.error);
 });
 /**
