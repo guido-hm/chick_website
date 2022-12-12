@@ -57,9 +57,16 @@ div {
 
 h1 {
     color: red;
-    
-    font-size: 35px;
     text-align: center;
+    font-size: 35px;
+    
+}
+
+h2 {
+    color: black;
+    
+    font-size: 15px;
+    text-align: left;
     
 }
 
